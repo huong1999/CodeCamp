@@ -1,35 +1,67 @@
-
+﻿
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyPets</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  body {
-    position: relative; 
-  }
-  .affix {
-    top:0;
-    width: 100%;
-    z-index: 9999 !important;
-  }
+    <title>MyPets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style-main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            position: relative;
+        }
 
-  .affix ~ .container-fluid {
-   position: relative;
-   top: 50px;
-  }
-  #section1 {padding-top:1000px;height:500px;color: #fff;background-color: transparent;}
-  #section2 {padding-top:1000px;height:500px;color: #fff; background-color: #2d2d30;}
-  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
-  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
-  </style>
-	</head>
+        .affix {
+            top: 0;
+            width: 100%;
+            z-index: 9999 !important;
+        }
+
+            .affix ~ .container-fluid {
+                position: relative;
+                top: 50px;
+            }
+
+        #section1 {
+            padding-top: 1000px;
+            height: 500px;
+            color: #fff;
+            background-color: transparent;
+        }
+
+        #section2 {
+            padding-top: 1000px;
+            height: 500px;
+            color: #fff;
+            background-color: #2d2d30;
+        }
+
+        #section3 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #ff9800;
+        }
+
+        #section41 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #00bcd4;
+        }
+
+        #section42 {
+            padding-top: 50px;
+            height: 500px;
+            color: #fff;
+            background-color: #009688;
+        }
+    </style>
+</head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50"  style="background-color: currentColor">
 <!--Menu-->
@@ -53,25 +85,25 @@
 		<!--Thanh search-->
 		<ul class="nav navbar-nav navbar-left" >
 		<li class="col-xs-8" style="margin-top: 20px">
-    			<input class="form-control" list="news" name="news" type="text">
+    			<input id="search-input" class="form-control" list="news" name="news" type="text">
 				
   					<datalist id="news">
-    					<option value="Thông tin cơ bản về mèo Laperm">
-    					<option value="Biện pháp khống chế hành vi hung hãn của chó">
-    					<option value="Nhận biết và cách xử lí khi mèo bị nhiễm trùng hệ tiêu hóa">
-    					<option value="Cách nhận biết mèo bị bệnh dại và những điều bạn cần làm">
-    					<option value="Những thứ cần chuẩn bị trước khi nuôi một bé mèo">
-						<option value="Sự thật về giống chó BullDog Mỹ">
-						<option value="Tìm hiểu về tiêu chuẩn cân nặng của giống chó Samoyed">
-						<option value="Hội chứng Cushing ở chó và những điều cần biết">
-						<option value="Đôi nét về giống chó Akita Inu thuần chủng">
-						<option value="Thực đơn giúp mèo nhà bạn tăng cân">
-						<option value="Nên cho mèo ăn mấy lần 1 ngày">
-						<option value="Bạn nên làm gì khi mèo lười ăn">
+                        <option value="Thông tin cơ bản về mèo Laperm" id="search-input">
+    					<option value="Biện pháp khống chế hành vi hung hãn của chó"  id="search-input">
+    					<option value="Nhận biết và cách xử lí khi mèo bị nhiễm trùng hệ tiêu hóa"  id="search-input">
+    					<option value="Cách nhận biết mèo bị bệnh dại và những điều bạn cần làm"  id="search-input">
+    					<option value="Những thứ cần chuẩn bị trước khi nuôi một bé mèo"  id="search-input">
+						<option value="Sự thật về giống chó BullDog Mỹ"  id="search-input">
+						<option value="Tìm hiểu về tiêu chuẩn cân nặng của giống chó Samoyed"  id="search-input">
+						<option value="Hội chứng Cushing ở chó và những điều cần biết"  id="search-input">
+						<option value="Đôi nét về giống chó Akita Inu thuần chủng"  id="search-input">
+						<option value="Thực đơn giúp mèo nhà bạn tăng cân"  id="search-input">
+						<option value="Nên cho mèo ăn mấy lần 1 ngày" id="search-input">
+						<option value="Bạn nên làm gì khi mèo lười ăn"  id="search-input">
   					</datalist>
   		</li>
       	<li class="input-group-btn">
-        	<button type="button" class="btn btn-info" style="margin-top: 20px;margin-left: 10px">
+        	<button id="search" type="button" class="btn btn-info" style="margin-top: 20px;margin-left: 10px">
 				<span class="glyphicon glyphicon-search"></span> Search
     		</button>
 	  	</li>
@@ -90,7 +122,7 @@
               		<li><a href="Cat/Cat2.html">Thức ăn cho mèo</a></li>
             	</ul>
         	</li>
-			<li><a href="#section4" style="width: 150px;text-align: center"><h4>Cấp cứu</h4></li>
+			<li><a href="login-register/login-register.html" style="width: 150px;text-align: center"><h4>Log in</h4></li>
         </ul>
       </div>
   </div>
@@ -145,7 +177,7 @@
     		<div class="col-sm-4">
       			<div class="thumbnail" >
         			<img src="img/cat.jpg" class="img-rounded" alt="Cinque Terre" width="390" height="300">
-        			<a href="content/c1.html" >Thông tin cơ bản về mèo Laperm</a>
+        			<a href="./content/c1.html" >Thông tin cơ bản về mèo Laperm</a>
       			</div>
     		</div>
     		<div class="col-sm-4">
@@ -506,7 +538,7 @@
       			
     		</div>
 	
-    		<div class="col-sm-4" style="margin-bottom: =70px">
+    		<div class="col-sm-4" style="margin-bottom: 70px">
       			
 				<iframe class="youtube-link" src="https://www.youtube.com/embed/0dSb98dGMzk?feature=oembed" frameborder="0" allowfullscreen></iframe>
       			
@@ -515,6 +547,39 @@
 	</div>
 <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/top.png" style="width: 50px; height: 53px; margin-top:600px ;margin-left: 1370px" data-spy="affix" data-offset-top="197"></button> 
 	<script>
+        $(document).ready(function () {
+            $("#search").on("click", function (e) {
+                jQuery.ajax({
+                    //url của file
+                    url: "http://192.168.43.156:8000/posts/search",
+                    // loại request
+                    type: "POST",
+                    // Xác định việc request có nên được thao tác bất đồng bộ hay không. Giá trị nhận vào và true hoặc false. Mặc định là true.
+                    async: false,
+                    //Chỉ ra loại nội dùng mà được dùng để gửi tới server. Mặc định là application/x-www-form-urlencoded
+                    //contentType: "application/x-www-form-urlencoded",
+                    //dữ liệu được gửi đến server
+                    data: {
+                        "keyword": jQuery("#search-input").val()
+                    },
+
+                })
+                    .done(function (response, textStatus, jqXHR) {
+
+                        alert("You must login now!");
+                        window.location.href = "login-register/login-register.html";
+
+                    })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                        alert("Lỗi kết nối");
+                    })
+                    .always(function () {
+                        e.preventDefault();
+                    });
+            });
+        });
+
      // When the user scrolls down 20px from the top of the document, show the button
      window.onscroll = function() {scrollFunction()};
      function scrollFunction() {
@@ -529,6 +594,7 @@
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
             }
+
 </script>
 		<!-- Footer -->
 <footer class="text-center">
